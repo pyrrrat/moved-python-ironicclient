@@ -42,6 +42,7 @@ class NodeShellTest(utils.BaseTestCase):
                'maintenance',
                'maintenance_reason',
                'name',
+               'network_provider',
                'power_state',
                'properties',
                'provision_state',
@@ -808,3 +809,12 @@ class NodeShellTest(utils.BaseTestCase):
         n_shell.do_node_get_vendor_passthru_methods(client_mock, args)
         client_mock.node.get_vendor_passthru_methods.assert_called_once_with(
             'node_uuid')
+
+    def test_do_node_create_with_network_provider(self):
+        client_mock = mock.MagicMock()
+        args = mock.MagicMock()
+        args.network_provider = 'neutron_plugin'
+
+        n_shell.do_node_create(client_mock, args)
+        client_mock.node.create.assert_called_once_with(
+            network_provider='neutron_plugin')
