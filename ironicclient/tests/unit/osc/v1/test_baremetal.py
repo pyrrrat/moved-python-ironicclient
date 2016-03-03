@@ -278,7 +278,7 @@ class TestBaremetalList(TestBaremetal):
                    'Provisioning State', 'Provision Updated At', 'Reservation',
                    'Target Power State', 'Target Provision State',
                    'Updated At', 'Inspection Finished At',
-                   'Inspection Started At', 'UUID', 'Name')
+                   'Inspection Started At', 'UUID', 'Name', 'Network Provider')
         self.assertEqual(collist, columns)
         datalist = ((
             '',
@@ -306,6 +306,7 @@ class TestBaremetalList(TestBaremetal):
             '',
             baremetal_fakes.baremetal_uuid,
             baremetal_fakes.baremetal_name,
+            '',
         ), )
         self.assertEqual(datalist, tuple(data))
 
